@@ -1,0 +1,16 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        left_arr=[0]*len(height)
+        right_arr=[0]*len(height)
+        capacity=0
+        water_hold=0
+        left_arr[0]=height[0]
+        right_arr[-1]=height[-1]
+        for i in range(1,len(height)):
+            left_arr[i]=max(height[i],left_arr[i-1])
+        for j in range(len(height)-2,-1,-1):
+            right_arr[j]=max(height[j],right_arr[j+1])
+        for k in range(0,len(height)):
+            capacity=min(left_arr[k],right_arr[k])
+            water_hold+=capacity-height[k]
+        return water_hold 
