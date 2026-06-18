@@ -1,0 +1,11 @@
+class Solution {
+    public boolean checkGoodInteger(int n) {
+        int DigitSum=0 , SqurSum=0;
+        while(n!=0){
+            DigitSum+=n%10;
+            SqurSum+=((n%10)*(n%10));
+            n/=10;
+        }
+        return (SqurSum-DigitSum) >=50 ? true : false;
+    }
+}
