@@ -1,0 +1,18 @@
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        String t=Integer.toBinaryString(n);
+        int count=0;
+        for(int i=0;i<t.length();i++){
+            if(t.charAt(i)=='1'){
+                count++;
+            }
+        }
+        if(n<0){
+            return false;
+        }
+        if(count==1){
+            return true;
+        }
+        return false;
+    }
+}
