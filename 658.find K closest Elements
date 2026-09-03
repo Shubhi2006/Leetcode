@@ -1,0 +1,19 @@
+import java.util.*;
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        PriorityQueue<Map.Entry<Integer,Integer>> pq=new PriorityQueue<>(
+            Map.Entry.<Integer,Integer>comparingByKey().thenComparing(Map.Entry.comparingByValue())
+        );
+        List<Integer>answer=new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            pq.add(new AbstractMap.SimpleEntry<>(Math.abs(x-arr[i]),i));
+        }
+        while(k-->0){
+            answer.add(arr[pq.peek().getValue()]);
+            pq.poll();
+        }
+        Collections.sort(answer);
+        return answer;
+
+    }
+}
