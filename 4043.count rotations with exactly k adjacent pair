@@ -1,0 +1,21 @@
+class Solution {
+    public int countRotations(String s, int k) {
+        int lenS=s.length();
+        int i=0;
+        int count=0;
+        while(i<lenS){
+            String newstr=s.substring(i,lenS)+s.substring(0,i);
+            int internalcount=0;
+            for(int j=0;j<lenS-1;j++){
+                if(newstr.charAt(j)==newstr.charAt(j+1)){
+                    internalcount++;
+                }
+            }
+            if(internalcount==k){
+                count++;
+            }
+            i++;
+        }
+        return count;
+    }
+}
