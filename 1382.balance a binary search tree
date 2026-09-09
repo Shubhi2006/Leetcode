@@ -1,0 +1,30 @@
+class Solution {
+    public static List<Integer> inorder(TreeNode root,List<Integer>arr){
+        if(root==null){
+            return arr;
+        }
+        inorder(root.left,arr);
+        arr.add(root.val);
+        inorder(root.right,arr);
+        return arr;
+    }
+    public static TreeNode balance(int start,int end,List<Integer>arr){
+        if(start>end){
+           return null;
+        }
+        int mid=start+(end-start)/2;
+        TreeNode root= new TreeNode(arr.get(mid));
+        root.left=balance(start,mid-1,arr);
+        root.right=balance(mid+1,end,arr);
+        return root;
+    }
+    
+    public TreeNode balanceBST(TreeNode root) {
+        List<Integer>arr=new ArrayList<>();
+        arr=inorder(root,arr);
+        int start=0;
+        int end=arr.size()-1;
+        return balance(start,end,arr);
+         
+    }
+}
