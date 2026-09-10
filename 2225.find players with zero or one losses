@@ -1,0 +1,26 @@
+class Solution {
+    public List<List<Integer>> findWinners(int[][] matches) {
+        List<List<Integer>> result= new ArrayList<>();
+        List<Integer>ans0=new ArrayList<>();
+        List<Integer>ans1=new ArrayList<>();
+        HashMap<Integer,Integer> map=new HashMap<>();
+        for(int[]temp:matches){
+            map.put(temp[0],map.getOrDefault(temp[0],0)+0);
+            map.put(temp[1],map.getOrDefault(temp[1],0)+1); 
+        }
+        for(int i:map.keySet()){
+            if(map.get(i)==0){
+                ans0.add(i);
+            }
+            else if(map.get(i)==1){
+                ans1.add(i);
+            }
+        }
+        Collections.sort(ans0);
+        Collections.sort(ans1);
+        result.add(ans0);
+        result.add(ans1);
+        return result;
+
+    }
+}
