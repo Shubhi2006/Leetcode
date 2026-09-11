@@ -1,0 +1,19 @@
+class Solution {
+    public int totalNumbers(int[] digits) {
+        HashSet<String>map=new HashSet<>();
+        for(int i=0;i<digits.length;i++){
+            if(digits[i]==0){
+                continue;
+            }
+            for(int j=0;j<digits.length;j++){
+                for(int k=0;k<digits.length;k++){
+                    if(i!=j && j!=k && i!=k && digits[k]%2==0){
+                        String str=""+digits[i]+digits[j]+digits[k];
+                        map.add(str);
+                    }
+                }
+            }
+        }
+        return map.size();
+    }
+}
