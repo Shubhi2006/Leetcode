@@ -1,0 +1,31 @@
+class Solution {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        int[]ans=new int[nums1.length];
+        int len=0;
+        for(int j=0;j<nums1.length;j++){
+            int index=Integer.MAX_VALUE;
+            for(int k=0;k<nums2.length;k++){
+                if(nums1[j]==nums2[k]){
+                    index=k;
+                    break;
+                }
+            }
+            if(index==Integer.MAX_VALUE){
+                ans[len++]=-1;
+                continue;
+            }   
+            boolean found=false;
+            for(int m=index+1;m<nums2.length;m++){
+                if(nums2[m]>nums1[j]){
+                    ans[len++]=nums2[m];
+                    found=true;
+                    break;
+                }
+            }
+            if(!found){
+                ans[len++]=-1;
+            }
+        }
+        return ans;
+    }
+}
