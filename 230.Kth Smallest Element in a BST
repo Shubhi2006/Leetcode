@@ -1,0 +1,21 @@
+class Solution {
+    int k;
+    public int binary(TreeNode root){
+        if(root==null){
+            return -1;
+        }
+        int left=binary(root.left);
+        if(left !=-1){
+            return left;
+        }
+        k--;
+        if(k==0){
+            return root.val;
+        }
+        return binary(root.right);
+    }
+    public int kthSmallest(TreeNode root, int k) {
+        this.k=k;
+        return binary(root);
+    }
+}
