@@ -1,0 +1,15 @@
+class Solution {
+    public int maxCount(int m, int n, int[][] ops) {
+        int minrow=Integer.MAX_VALUE;
+        int mincol=Integer.MAX_VALUE;
+        if(ops.length==0){
+            return m*n;
+        }
+        for(int[] element :ops){
+            minrow=Math.min(minrow,element[0]);
+            mincol=Math.min(mincol,element[1]);
+
+        }
+        return mincol*minrow;
+    }
+}
