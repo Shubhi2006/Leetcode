@@ -1,0 +1,29 @@
+class Solution {
+    public String evaluate(String s, List<List<String>> knowledge) {
+        HashMap<String,String>map=new HashMap<>();
+        for(List<String> ele:knowledge){
+            map.put(ele.get(0),ele.get(1));
+        }
+        StringBuilder ans=new StringBuilder("");
+        int left=0;
+        int right=0;
+        while(right<s.length()){
+            if(s.charAt(right)=='('){
+                ans.append(s.substring(left,right));
+                left=right;
+                
+            }
+            if(s.charAt(right)==')'){
+                String substr=s.substring(left+1,right);
+                String alpha=map.containsKey(substr)==true?map.get(substr):"?";
+                ans.append(alpha);
+                left=right+1;
+            }
+            right++;
+        }
+        ans.append(s.substring(left));
+        
+        return ans.toString();
+
+    }
+}
