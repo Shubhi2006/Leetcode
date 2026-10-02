@@ -1,0 +1,14 @@
+class Solution {
+    public boolean inorder(TreeNode root,int val){
+        if(root==null){
+            return true;
+        }
+        if(root.val !=val){
+            return false;
+        }
+        return inorder(root.left,val) && inorder(root.right,val);
+    }
+    public boolean isUnivalTree(TreeNode root) {
+        return  inorder(root,root.val);
+    }
+}
