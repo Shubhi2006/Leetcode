@@ -1,0 +1,17 @@
+class Solution {
+    int ans=0;
+    public void sumeven(TreeNode root,TreeNode parent,TreeNode grandparent){
+        if(root==null){
+            return;
+        }
+        if(grandparent !=null && grandparent.val%2==0){
+            ans+=root.val;
+        }
+        sumeven(root.left,root,parent);
+        sumeven(root.right,root,parent);
+    }
+    public int sumEvenGrandparent(TreeNode root) {
+        sumeven(root,null,null);
+        return ans;
+    }
+}
