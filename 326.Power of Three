@@ -1,0 +1,14 @@
+class Solution {
+    public boolean power(int n,long num){
+        if(n==num){
+            return true;
+        }
+        else if(num>n){
+            return false;
+        }
+        return power(n,num*3);
+    }
+    public boolean isPowerOfThree(int n) {
+        return power(n,1);
+    }
+}
