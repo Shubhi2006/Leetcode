@@ -1,0 +1,27 @@
+class Solution {
+    public int[] findEvenNumbers(int[] digits) {
+        int[]freq =new int[10];
+        ArrayList<Integer>ans=new ArrayList<>();
+        for(int i=0;i<digits.length;i++){
+            freq[digits[i]]++;
+        }
+        for(int j=100;j<=999;j=j+2){
+            int[]need=new int[10];
+            int a=j/100;
+            int b=(j/10)%10;
+            int c=j%10;
+            need[a]++;
+            need[b]++;
+            need[c]++;
+            if(freq[a]>=need[a] && freq[b]>=need[b] && freq[c]>=need[c]){
+                ans.add(j);
+            }
+        }
+        int[]result=new int[ans.size()];
+        int count=0;
+        for(int ele:ans){
+            result[count++]=ele;
+        }
+        return result;
+    }
+}
