@@ -1,0 +1,28 @@
+import java.util.*;
+class Solution {
+    public int findShortestSubArray(int[] nums) {
+        HashMap<Integer,Integer>map=new HashMap<>();
+        for(int number:nums){
+            map.put(number,map.getOrDefault(number,0)+1);
+        }
+        PriorityQueue<Map.Entry<Integer,Integer>>pq=new PriorityQueue<>((a,b)->b.getKey().compareTo(a.getKey()));
+        for(Integer key:map.keySet()){
+            pq.add(new AbstractMap.SimpleEntry<>(map.get(key),key));
+        }
+        int top=pq.peek().getKey();
+        int min=Integer.MAX_VALUE;
+        while(!pq.isEmpty() && pq.peek().getKey()==top){
+            int key=pq.poll().getValue();
+            int left=0;
+            int right=nums.length-1;
+            while(nums[left]!=key){
+                left++;
+            }
+            while(nums[right]!=key){
+                right--;
+            }
+            min=Math.min(min,right-left+1);
+        }
+        return min;
+    }
+}
