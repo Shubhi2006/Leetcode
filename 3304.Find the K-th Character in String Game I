@@ -1,0 +1,19 @@
+class Solution {
+    public void kthCharacterUtil(StringBuilder str,int k){
+        if(str.length()>=k){
+            return;
+        }
+        int size=str.length();
+        for(int i=0;i<size;i++){
+           str.append((char)(str.charAt(i)+1));
+        }
+        kthCharacterUtil(str,k);
+        return ;
+
+    }
+    public char kthCharacter(int k) {
+        StringBuilder str=new StringBuilder("a");
+        kthCharacterUtil(str,k);
+        return str.charAt(k-1);
+    }
+}
