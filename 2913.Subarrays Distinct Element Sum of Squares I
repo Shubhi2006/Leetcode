@@ -1,0 +1,17 @@
+class Solution {
+    public int sumCounts(List<Integer> nums) {
+        int sum=0;
+        for(int I=0;I<nums.size();I++){
+            for(int j=I;j<nums.size();j++) {
+                HashSet<Integer>set=new HashSet<>() ;
+                int count=0;
+                for(int k=I;k<=j;k++) {
+                    set. add(nums.get(k)) ;
+                }
+                count=set.size() ;
+                sum+=count *count;
+            }
+        }
+        return sum;
+    }
+}
