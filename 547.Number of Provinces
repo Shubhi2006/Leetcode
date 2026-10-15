@@ -1,0 +1,35 @@
+class Solution {
+    public void dfs(ArrayList[]adj,int[]visited,int curr){
+        visited[curr]=1;
+        for(int i=0;i<adj[curr].size();i++){
+            int neighbour=(int)adj[curr].get(i);
+            if(visited[neighbour]==0){
+                dfs(adj,visited,neighbour);
+            }
+        }
+    }
+    public int findCircleNum(int[][] isConnected) {
+        int count=0;
+        int v=isConnected.length;
+        ArrayList[]adj=new ArrayList[v];
+        for(int ele=0;ele<v;ele++){
+            adj[ele]=new ArrayList<>();
+        }
+        for(int i=0;i<v;i++){
+            for(int j=0;j<v;j++){
+                if(i!=j && isConnected[i][j]==1){
+                    adj[i].add(j);
+                }
+            }
+        }
+        int[]visited=new int[v];
+        for(int i=0;i<v;i++){
+            if(visited[i]==0){
+                count++;
+                dfs(adj,visited,i);
+            }
+        }
+        return count;
+
+    }
+}
