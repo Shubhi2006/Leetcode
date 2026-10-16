@@ -1,0 +1,21 @@
+class Solution {
+    public int[] numberOfLines(int[] widths, String s) {
+        int line=1;
+        int sum=0;
+        int[]ans=new int[2];
+        for(int i=0;i<s.length();i++){
+            int width=widths[s.charAt(i)-'a'];
+            if(sum+width>100){
+                line++;
+                sum=width;
+            }
+            else{
+                sum+=width;
+            }
+        }
+        ans[0]=line;
+        ans[1]=sum;
+        return ans;
+
+    }
+}
