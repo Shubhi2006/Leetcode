@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isHappyUtil(int n,HashSet<Integer>set){
+        if(n==1){
+            return true;
+        }
+        if(set.contains(n)){
+            return false;
+        }
+        set.add(n);
+        int sum=0;
+        while(n>0){
+            sum+=((n%10)*(n%10));
+            n=n/10;
+        }
+        return isHappyUtil(sum,set);
+    }
+    public boolean isHappy(int n) {
+        HashSet<Integer>set=new HashSet<>();
+        return isHappyUtil(n,set);
+    }
+}
