@@ -1,0 +1,22 @@
+class Solution {
+    public boolean check(int[] nums) {
+        int i;
+        for(i=0;i<nums.length-1;i++){
+            if(nums[i]>nums[i+1]){
+                break;
+            }
+        }
+        if(i==nums.length-1){
+            return true;
+        }
+        for(int j=i+1;j<nums.length-1;j++){
+            if(nums[j]>nums[j+1]){
+                return false;
+            }
+        }
+        if(nums[nums.length-1]<=nums[0]){
+            return true;
+        }
+        return false;
+    }
+}
