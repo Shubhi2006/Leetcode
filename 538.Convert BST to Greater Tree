@@ -1,0 +1,18 @@
+class Solution {
+    public TreeNode convertBST(TreeNode root) {
+        int total=0;
+        TreeNode new_root=root;
+        Stack<TreeNode> stack=new Stack<>();
+        while(!stack.isEmpty() || root!=null){
+            while(root!=null){
+                stack.add(root);
+                root=root.right;
+            }
+            root=stack.pop();
+            total=total+root.val;
+            root.val=total;
+            root=root.left;
+        }
+        return  new_root;
+    }
+}
