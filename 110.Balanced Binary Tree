@@ -1,0 +1,20 @@
+class Solution {
+    public static int height(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+        return Math.max(height(root.left),height(root.right))+1;
+    }
+    public static boolean inorder(TreeNode root){
+        if(root==null){
+            return true;
+        }
+        boolean left=inorder(root.left);
+        int diff=Math.abs(height(root.left)-height(root.right));
+        boolean right=inorder(root.right);
+        return left && right && diff<=1;
+    }
+    public boolean isBalanced(TreeNode root) {
+        return inorder(root);
+    }
+}
