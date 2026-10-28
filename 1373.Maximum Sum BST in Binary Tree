@@ -1,0 +1,31 @@
+class Solution {
+    class info{
+        boolean bst;
+        int min,max,sum;
+        info(boolean bst,int min,int max,int sum){
+            this.bst=bst;
+            this.min=min;
+            this.max=max;
+            this.sum=sum;
+        }
+    }
+    int max=0;
+    public info helper(TreeNode root){
+        if(root==null){
+            return new info(true,Integer.MAX_VALUE,Integer.MIN_VALUE,0);
+        }
+        info left=helper(root.left);
+        info right=helper(root.right);
+        if(left.bst && right.bst && left.max<root.val && root.val<right.min){
+            int total=left.sum+right.sum+root.val;
+            max=Math.max(max,total);
+            return new info(true,Math.min(left.min,root.val),Math.max(root.val,right.max),total);
+        }
+        return new info(false,0,0,0);
+    }
+    public int maxSumBST(TreeNode root) {
+        max=0;
+        helper(root);
+        return max;
+    }
+}
