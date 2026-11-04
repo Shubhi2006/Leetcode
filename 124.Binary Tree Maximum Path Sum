@@ -1,0 +1,19 @@
+
+class Solution {
+    public static int helper(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+        int left=Math.max(helper(root.left),0);
+        int right=Math.max(helper(root.right),0);
+        int total=left+right+root.val;
+        maxsum=Math.max(maxsum,total);
+        return root.val+Math.max(left,right);
+    }
+    public static int maxsum=Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        maxsum=Integer.MIN_VALUE;
+        helper(root);
+        return maxsum;
+    }
+}
