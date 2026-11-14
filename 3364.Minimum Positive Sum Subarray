@@ -1,0 +1,19 @@
+class Solution {
+    public int minimumSumSubarray(List<Integer> nums, int l, int r) {
+        int max=Integer.MAX_VALUE;
+        int prefix[] =new int[nums.size()];
+        prefix[0]=nums.get(0);
+        for(int i=1;i<nums.size();i++){
+            prefix[i]=prefix[i-1]+nums.get(i);
+        }
+        for(int i=0;i<=nums.size()-l;i++){
+            int sum=0;
+            for(int j=i+l-1;j<Math.min(nums.size(),i+r);j++){
+                sum=i==0?prefix[j]:prefix[j]-prefix[i-1];
+                if(sum>0) max=Math.min(sum,max);
+
+            }
+        }
+        return max==Integer.MAX_VALUE?-1:max;
+    }
+}
