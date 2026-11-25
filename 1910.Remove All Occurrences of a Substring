@@ -1,0 +1,16 @@
+class Solution {
+    public static String remove(int i,String s,String part){
+        if(i+part.length()>s.length()){
+            return s;
+        }
+        int length=part.length();
+        if(s.substring(i,i+length).equals(part)){
+            return remove(0,s.substring(0,i)+s.substring(i+length),part);
+        }   
+        return remove(i+1,s,part); 
+    }
+    public String removeOccurrences(String s, String part) {
+        int i=0;
+        return remove(i,s,part);
+    }
+}
